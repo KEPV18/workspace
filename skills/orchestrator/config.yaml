@@ -1,0 +1,138 @@
+# OpenRouter Orchestrator Configuration
+
+# Model configurations
+models:
+  primary: "openrouter/openai/gpt-5-nano"
+  fallbacks:
+    - "openrouter/x-ai/grok-3-mini"
+    - "openrouter/google/gemini-2.5-flash-lite"
+    - "openrouter/perplexity/sonar"
+    - "openrouter/deepseek/deepseek-r1"
+    - "openrouter/deepseek/deepseek-v3.2"
+
+# Cost estimates per second (simplified)
+cost_per_second:
+  "openrouter/openai/gpt-5-nano": 0.0001
+  "openrouter/x-ai/grok-3-mini": 0.00015
+  "openrouter/google/gemini-2.5-flash-lite": 0.00012
+  "openrouter/perplexity/sonar": 0.0002
+  "openrouter/deepseek/deepseek-r1": 0.00018
+  "openrouter/deepseek/deepseek-v3.2": 0.00025
+
+# Task type classification keywords
+task_patterns:
+  coding:
+    - "code"
+    - "program"
+    - "function"
+    - "script"
+    - "python"
+    - "javascript"
+    - "java"
+    - "sql"
+    - "algorithm"
+    - "debug"
+    - "fix"
+    - "implement"
+  
+  analysis:
+    - "analyze"
+    - "analysis"
+    - "compare"
+    - "evaluate"
+    - "assess"
+    - "review"
+    - "critique"
+    - "examine"
+    - "study"
+    - "research"
+    - "data"
+    - "statistics"
+  
+  summarization:
+    - "summarize"
+    - "summary"
+    - "brief"
+    - "tl;dr"
+    - "tl;dr"
+    - "overview"
+    - "recap"
+    - "abstract"
+    - "condense"
+    - "shorten"
+  
+  creative:
+    - "create"
+    - "write"
+    - "story"
+    - "poem"
+    - "creative"
+    - "imagine"
+    - "brainstorm"
+    - "idea"
+    - "generate"
+    - "invent"
+    - "design"
+  
+  translation:
+    - "translate"
+    - "translation"
+    - "language"
+    - "arabic"
+    - "english"
+    - "french"
+    - "spanish"
+    - "german"
+  
+  qa:
+    - "what is"
+    - "how to"
+    - "why"
+    - "when"
+    - "where"
+    - "explain"
+    - "define"
+    - "describe"
+    - "question"
+    - "answer"
+
+# Model preferences by task type (initial biases)
+model_biases:
+  coding:
+    - "openrouter/deepseek/deepseek-v3.2"
+    - "openrouter/deepseek/deepseek-r1"
+    - "openrouter/openai/gpt-5-nano"
+  
+  analysis:
+    - "openrouter/openai/gpt-5-nano"
+    - "openrouter/google/gemini-2.5-flash-lite"
+    - "openrouter/x-ai/grok-3-mini"
+  
+  summarization:
+    - "openrouter/perplexity/sonar"
+    - "openrouter/google/gemini-2.5-flash-lite"
+    - "openrouter/openai/gpt-5-nano"
+  
+  creative:
+    - "openrouter/x-ai/grok-3-mini"
+    - "openrouter/openai/gpt-5-nano"
+    - "openrouter/deepseek/deepseek-v3.2"
+  
+  translation:
+    - "openrouter/google/gemini-2.5-flash-lite"
+    - "openrouter/openai/gpt-5-nano"
+    - "openrouter/perplexity/sonar"
+  
+  qa:
+    - "openrouter/openai/gpt-5-nano"
+    - "openrouter/perplexity/sonar"
+    - "openrouter/google/gemini-2.5-flash-lite"
+
+# Orchestrator settings
+orchestrator:
+  max_subtasks: 5
+  subtask_delimiter: ";"
+  use_learning: true
+  log_directory: "~/.openclaw/workspace/logs"
+  min_subtask_length: 10  # characters
+  max_subtask_length: 500 # characters

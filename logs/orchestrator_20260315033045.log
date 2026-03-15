@@ -1,0 +1,2 @@
+2026-03-15T03:30:46.879847+00:00 | Subtask 1 | Model: openrouter/deepseek/deepseek-v3.2 | Duration: 1.85s | Cost: $0.000462 | Success: False | Output: error: unknown option '--model'
+2026-03-15T03:30:48.712291+00:00 | Subtask 2 | Model: openrouter/openai/gpt-5-nano | Duration: 1.83s | Cost: $0.000183 | Success: False | Output: error: unknown option '--model'

@@ -1,0 +1,183 @@
+{
+  "performance": {
+    "coding": {
+      "openrouter/deepseek/deepseek-v3.2": {
+        "total_tasks": 4,
+        "successful_tasks": 0,
+        "durations": [
+          3.6126480102539062,
+          1.8478219509124756,
+          1.8617465496063232,
+          1.8778996467590332
+        ],
+        "costs": [
+          0.0009031620025634766,
+          0.0004619554877281189,
+          0.0004654366374015808,
+          0.0004694749116897583
+        ],
+        "avg_duration": 2.3000290393829346,
+        "avg_cost": 0.0005750072598457337,
+        "success_rate": 0.0
+      }
+    },
+    "qa": {
+      "openrouter/openai/gpt-5-nano": {
+        "total_tasks": 2,
+        "successful_tasks": 0,
+        "durations": [
+          3.498246908187866,
+          1.8314964771270752
+        ],
+        "costs": [
+          0.00034982469081878666,
+          0.00018314964771270752
+        ],
+        "avg_duration": 2.6648716926574707,
+        "avg_cost": 0.0002664871692657471,
+        "success_rate": 0.0
+      },
+      "openrouter/x-ai/grok-3-mini": {
+        "total_tasks": 2,
+        "successful_tasks": 0,
+        "durations": [
+          1.8487281799316406,
+          1.8753156661987305
+        ],
+        "costs": [
+          0.00027730922698974606,
+          0.00028129734992980954
+        ],
+        "avg_duration": 1.8620219230651855,
+        "avg_cost": 0.0002793032884597778,
+        "success_rate": 0.0
+      }
+    }
+  },
+  "task_history": [
+    {
+      "timestamp": "2026-03-15T03:28:50.224185+00:00",
+      "task_type": "coding",
+      "model": "openrouter/deepseek/deepseek-v3.2",
+      "duration": 3.6126480102539062,
+      "cost": 0.0009031620025634766,
+      "success": false,
+      "subtask_preview": "error: unknown command 'run'\n(Did you mean cron?)"
+    },
+    {
+      "timestamp": "2026-03-15T03:28:53.723143+00:00",
+      "task_type": "qa",
+      "model": "openrouter/openai/gpt-5-nano",
+      "duration": 3.498246908187866,
+      "cost": 0.00034982469081878666,
+      "success": false,
+      "subtask_preview": "error: unknown command 'run'\n(Did you mean cron?)"
+    },
+    {
+      "timestamp": "2026-03-15T03:30:46.879272+00:00",
+      "task_type": "coding",
+      "model": "openrouter/deepseek/deepseek-v3.2",
+      "duration": 1.8478219509124756,
+      "cost": 0.0004619554877281189,
+      "success": false,
+      "subtask_preview": "error: unknown option '--model'"
+    },
+    {
+      "timestamp": "2026-03-15T03:30:48.711541+00:00",
+      "task_type": "qa",
+      "model": "openrouter/openai/gpt-5-nano",
+      "duration": 1.8314964771270752,
+      "cost": 0.00018314964771270752,
+      "success": false,
+      "subtask_preview": "error: unknown option '--model'"
+    },
+    {
+      "timestamp": "2026-03-15T03:32:49.481991+00:00",
+      "task_type": "coding",
+      "model": "openrouter/deepseek/deepseek-v3.2",
+      "duration": 1.8617465496063232,
+      "cost": 0.0004654366374015808,
+      "success": false,
+      "subtask_preview": "Error: Pass --to <E.164>, --session-id, or --agent to choose a session"
+    },
+    {
+      "timestamp": "2026-03-15T03:32:51.331450+00:00",
+      "task_type": "qa",
+      "model": "openrouter/x-ai/grok-3-mini",
+      "duration": 1.8487281799316406,
+      "cost": 0.00027730922698974606,
+      "success": false,
+      "subtask_preview": "Error: Pass --to <E.164>, --session-id, or --agent to choose a session"
+    },
+    {
+      "timestamp": "2026-03-15T03:33:03.499376+00:00",
+      "task_type": "coding",
+      "model": "openrouter/deepseek/deepseek-v3.2",
+      "duration": 1.8778996467590332,
+      "cost": 0.0004694749116897583,
+      "success": false,
+      "subtask_preview": "Error: Pass --to <E.164>, --session-id, or --agent to choose a session"
+    },
+    {
+      "timestamp": "2026-03-15T03:33:05.375876+00:00",
+      "task_type": "qa",
+      "model": "openrouter/x-ai/grok-3-mini",
+      "duration": 1.8753156661987305,
+      "cost": 0.00028129734992980954,
+      "success": false,
+      "subtask_preview": "Error: Pass --to <E.164>, --session-id, or --agent to choose a session"
+    }
+  ],
+  "model_stats": {
+    "openrouter/openai/gpt-5-nano": {
+      "total_tasks": 0,
+      "successful_tasks": 0,
+      "total_duration": 0,
+      "total_cost": 0,
+      "by_task_type": {}
+    },
+    "openrouter/x-ai/grok-3-mini": {
+      "total_tasks": 0,
+      "successful_tasks": 0,
+      "total_duration": 0,
+      "total_cost": 0,
+      "by_task_type": {}
+    },
+    "openrouter/google/gemini-2.5-flash-lite": {
+      "total_tasks": 0,
+      "successful_tasks": 0,
+      "total_duration": 0,
+      "total_cost": 0,
+      "by_task_type": {}
+    },
+    "openrouter/perplexity/sonar": {
+      "total_tasks": 0,
+      "successful_tasks": 0,
+      "total_duration": 0,
+      "total_cost": 0,
+      "by_task_type": {}
+    },
+    "openrouter/deepseek/deepseek-r1": {
+      "total_tasks": 0,
+      "successful_tasks": 0,
+      "total_duration": 0,
+      "total_cost": 0,
+      "by_task_type": {}
+    },
+    "openrouter/deepseek/deepseek-v3.2": {
+      "total_tasks": 0,
+      "successful_tasks": 0,
+      "total_duration": 0,
+      "total_cost": 0,
+      "by_task_type": {}
+    }
+  },
+  "learning_config": {
+    "exploration_rate": 0.2,
+    "free_model_priority": 1.5,
+    "min_tasks_for_confident": 3,
+    "cost_weight": 0.4,
+    "speed_weight": 0.3,
+    "quality_weight": 0.3
+  }
+}

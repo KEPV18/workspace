@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    "openclaw-dashboard": {
+      "version": "1.7.3",
+      "installedAt": 1773535104075
+    },
+    "freeride-ai": {
+      "version": "1.0.0",
+      "installedAt": 1773536223832
+    },
+    "data-analysis": {
+      "version": "1.0.2",
+      "installedAt": 1773538621741
+    },
+    "openclaw-smart-router": {
+      "version": "1.0.0",
+      "installedAt": 1773539523439
+    },
+    "open-router": {
+      "version": "1.0.0",
+      "installedAt": 1773540122180
+    }
+  }
+}
