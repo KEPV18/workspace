@@ -1,0 +1,66 @@
+# قواعد اختيار النماذج بناءً على التعقيد
+complexity_thresholds:
+  low: 0.3
+  medium: 0.7
+  high: 1.0
+
+# تعيين النماذج لكل مستوى تعقيد
+model_mapping:
+  low:
+    - z-ai/glm-4.7-flash
+    - google/gemini-2.5-flash-lite
+  medium:
+    - openai/gpt-5-nano
+    - x-ai/grok-3-mini
+  high:
+    - deepseek/deepseek-v3.2
+    - perplexity/sonar
+
+# حدود التكلفة
+cost_limits:
+  daily: 0.50
+  weekly: 3.50
+  monthly: 10.00
+
+# قواعد خاصة بأنواع المهام
+task_specific_rules:
+  coding:
+    preferred_models:
+      - deepseek/deepseek-v3.2
+      - openai/gpt-5-nano
+    complexity_adjustment: +0.2
+  
+  research:
+    preferred_models:
+      - perplexity/sonar
+      - google/gemini-2.5-flash-lite
+    complexity_adjustment: +0.1
+  
+  creative:
+    preferred_models:
+      - x-ai/grok-3-mini
+      - openai/gpt-5-nano
+    complexity_adjustment: +0.0
+  
+  simple_chat:
+    preferred_models:
+      - z-ai/glm-4.7-flash
+      - google/gemini-2.5-flash-lite
+    complexity_adjustment: -0.2
+
+# إعدادات التعلم
+learning_settings:
+  sample_size: 100
+  update_frequency: 24h
+  min_confidence: 0.7
+
+# إعدادات التحذير
+warning_settings:
+  budget_warning_thresholds:
+    - percentage: 70
+      message: "⚠️ تجاوزت 70% من الميزانية الشهرية"
+    - percentage: 90
+      message: "⚠️ تحذير: تجاوزت 90% من الميزانية الشهرية"
+  
+  cost_per_request_warning: 0.05
+  unusual_pattern_threshold: 3

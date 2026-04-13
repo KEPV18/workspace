@@ -19,6 +19,15 @@ cost_per_second:
   "openrouter/deepseek/deepseek-r1": 0.00018
   "openrouter/deepseek/deepseek-v3.2": 0.00025
 
+# Token budget configuration (added for cost-control)
+token_budget:
+  daily_tokens: 10000
+  per_model_limits:
+    openrouter/openai/gpt-5-nano: 0
+    openrouter/x-ai/grok-3-mini: 0
+    openrouter/google/gemini-2.5-flash-lite: 0
+  reserve_tokens_floor: 20000
+
 # Task type classification keywords
 task_patterns:
   coding:
@@ -71,8 +80,6 @@ task_patterns:
     - "brainstorm"
     - "idea"
     - "generate"
-    - "invent"
-    - "design"
   
   translation:
     - "translate"
@@ -136,3 +143,4 @@ orchestrator:
   log_directory: "~/.openclaw/workspace/logs"
   min_subtask_length: 10  # characters
   max_subtask_length: 500 # characters
+  default_to: "5670001305"

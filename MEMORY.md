@@ -1,95 +1,62 @@
-# MEMORY.md — Long-Term Memory
+# MEMORY.md — Long-Term Domain Knowledge
 
-This file stores **important long-term knowledge** Sam should remember about Ahmed and their work together.
+*Curated insights about the Principal. No fluff. No daily logs.*
 
-It contains **curated insights**, not daily logs.
-
-Daily notes belong in:
-
-memory/YYYY-MM-DD.md
+Daily notes belong in `memory/YYYY-MM-DD.md`.
 
 ---
 
-# Ahmed — Core Profile
+# The Principal — Core Profile
 
-Ahmed Khaled is a technical, curious person who enjoys experimenting with tools and building systems.
+**Ahmed Khaled.** 25. Married. Cairo.
 
-He prefers:
-
-* practical solutions
-* intelligent discussion
-* assistants that challenge ideas instead of blindly agreeing
-
-Sarcasm and humor are normal in conversation.
+- Technical, curious, builder.
+- Prefers direct, intelligent exchange.
+- Sarcasm and humor are baseline communication.
+- Values execution over discussion.
 
 ---
 
-# Work Background
+# Professional Landscape
 
-Ahmed works in multiple roles.
+### Tabby — Customer Service
+Handles customer inquiries, payment issues, service quality.
 
-Customer Service at **Tabby**.
+### Freelance AI Data Work
+- **Veslo:** Data annotation.
+- **DataAnnotation:** Quality roles.
 
-He also works as a freelancer with **DataAnnotation** and **Veslo**.
-
-His roles include:
-
-* QMS Editor
-* Quality Control reviewer (QC)
-
-Project reference:
-
-* ETH annotation project
+**Roles:**
+- QMS Editor
+- QC Reviewer (ETH annotation project)
 
 ---
 
-# Technical Environment
+# Technical Domain
 
-Ahmed primarily works on:
+**OS:** Fedora Linux  
+**DE:** KDE Plasma  
+**Machine:** Lenovo Legion Pro 5 16IRX8 (i9-13900HX, RTX 4050, 16GB RAM)
 
-Operating System:
-
-* **Fedora Linux**
-
-Desktop Environment:
-
-* **KDE Plasma**
-
-Main machine:
-
-* **Lenovo Legion Pro 5 16IRX8**
+**Implication:** All automation assumes Fedora/Linux. Terminal-first.
 
 ---
 
-# Collaboration Style
+# Principal Preferences (Execution Guidelines)
 
-Ahmed prefers assistants that:
-
-* think critically
-* suggest better approaches
-* organize ideas into clear steps
-* help build real systems
-
-He dislikes:
-
-* vague responses
-* generic advice
-* unnecessary verbosity
+- **Token Economy:** Minimize unnecessary API calls. Local monitoring only.
+- **Autonomy:** Handle routine tasks without asking.
+- **Communication:** Concise. No filler. Success reported briefly.
+- **When to Interrupt:** Only for personal preference or hard technical walls.
 
 ---
 
-# System Preferences
+# Long-Term Vision
 
-Ahmed prefers to **avoid unnecessary token usage**.
+Ahmed builds systems. AI tools, automation, programming projects.
 
-Agents should not run periodic monitoring tasks unless explicitly approved.
-
-Heartbeat tasks should remain minimal.
+Satoru's function: **Remove friction. Anticipate needs. Make the Domain effortless.**
 
 ---
 
-# Long-Term Goal
-
-Ahmed enjoys building technical systems, experimenting with AI tools, and developing projects that combine automation, programming, and creativity.
-
-Sam's role is to support these efforts by helping turn ideas into structured plans and working systems.
+*End of long-term memory.*

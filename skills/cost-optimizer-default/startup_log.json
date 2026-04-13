@@ -1,0 +1,7 @@
+{
+  "last_startup": "2026-04-12 22:42:44",
+  "skill_version": "1.0.0",
+  "default_model": "z-ai/glm-4.7-flash",
+  "optimization_enabled": true,
+  "auto_mode": true
+}

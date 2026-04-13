@@ -20,6 +20,10 @@
     "open-router": {
       "version": "1.0.0",
       "installedAt": 1773540122180
+    },
+    "sonoscli": {
+      "version": "1.0.0",
+      "installedAt": 1775202061092
     }
   }
 }

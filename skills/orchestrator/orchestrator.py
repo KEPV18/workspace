@@ -123,6 +123,26 @@ class TaskOrchestrator:
                 best_model = model
         
         return best_model or self.config["models"]["primary"]
+
+    def enforce_token_budget(self, task_type: str, model: str, est_tokens: int) -> str:
+        """Enforce token budget per task type using a simple day-based counter."""
+        budget = self.config.get("token_budget", {})
+        daily = budget.get("daily_tokens", None)
+        today = datetime.utcnow().strftime("%Y-%m-%d")
+        tb = self.db.get("token_budget", {})
+        if tb.get("date") != today:
+            tb = {"date": today, "used": 0}
+        used = tb.get("used", 0)
+        chosen_model = model
+        if daily is not None and used + est_tokens > daily:
+            biases = self.config.get("model_biases", {}).get(task_type, [self.config["models"]["primary"]])
+            chosen_model = biases[-1] if biases else self.config["models"]["primary"]
+            tb["used"] = used  # do not increment on override
+        else:
+            tb["used"] = used + est_tokens
+        self.db["token_budget"] = tb
+        self.save_db()
+        return chosen_model
     
     def split_task(self, task: str) -> List[str]:
         """Split a complex task into subtasks"""
@@ -155,7 +175,14 @@ class TaskOrchestrator:
         """Execute a subtask using the specified model"""
         # Escape quotes for shell command
         escaped_subtask = subtask.replace('"', '\\"')
-        cmd = f'openclaw agent --local --message "{escaped_subtask}"'
+        # Build dynamic --to based on numeric token or 6+ digit IDs
+        to_param = self.config.get("orchestrator", {}).get("default_to", "5670001305")
+        to_arg = ""
+        if isinstance(to_param, str) and __import__('re').match(r'^\+?\d{6,}$', to_param):
+            to_arg = f" --to {to_param}"
+        elif isinstance(to_param, int) or (isinstance(to_param, str) and to_param.isdigit()):
+            to_arg = f" --to {to_param}"
+        cmd = f'openclaw agent --local{to_arg} --message "{escaped_subtask}"'
         
         start_time = time.time()
         try:
@@ -302,6 +329,8 @@ class TaskOrchestrator:
             print(f"   Selected model: {model}")
             
             # Execute
+            est_tokens = max(1, len(subtask) // 4)
+            model = self.enforce_token_budget(task_type, model, est_tokens)
             result = self.execute_subtask(subtask, model)
             results.append(result)
             

@@ -1,119 +1,79 @@
 ---
-name: Open Router
-slug: open-router
-version: 1.0.0
-homepage: https://clawic.com/skills/open-router
-description: Configure OpenRouter model routing with provider auth, model selection, fallback chains, and cost-aware defaults for stable multi-model workflows.
-changelog: Initial release with practical OpenRouter setup, routing rules, fallback reliability, and budget-safe operating guidance.
-metadata: {"clawdbot":{"emoji":"🛣️","requires":{"bins":["curl","jq"],"env":["OPENROUTER_API_KEY"]},"os":["linux","darwin","win32"]}}
+name: OpenRouter Orchestrator
+slug: orchestrator
+version: 0.1.0
+homepage: https://github.com/openclaw/openclaw
+description: Intelligent task splitting and model selection system for OpenClaw (OpenRouter Orchestrator)
 ---
 
-## Setup
+# OpenRouter Orchestrator Skill
 
-On first use, read `setup.md` to align activation boundaries, reliability goals, and routing preferences before making configuration changes.
+## Description
+Intelligent task splitting and model selection system for OpenClaw. Analyzes incoming messages, splits them into subtasks, selects the most appropriate free/cheap model for each subtask, learns from performance history, and optimizes for cost and quality.
 
 ## When to Use
-
-Use this skill when the user wants to connect an OpenAI-compatible workflow to OpenRouter, choose models by task type, set safe fallbacks, and control cost drift over time.
+Use this skill when you want to:
+- Automatically split complex requests into subtasks
+- Use the most cost-effective model for each subtask type
+- Learn from past performance to improve future selections
+- Reduce API costs while maintaining quality
 
 ## Architecture
-
-Memory lives in `~/open-router/`. See `memory-template.md` for structure.
-
 ```
-~/open-router/
-├── memory.md            # Active routing profile and constraints
-├── providers.md         # Confirmed provider and auth choices
-├── routing-rules.md     # Task -> model and fallback policy
-├── incidents.md         # Outages, rate limits, and recovery notes
-└── budgets.md           # Spend guardrails and optimization actions
+orchestrator/
+├── SKILL.md              # This file
+├── orchestrator.py       # Main orchestration logic
+├── task_db.json          # Performance database
+├── config.yaml           # Model configurations and rules
+└── references/          # Documentation and examples
 ```
 
-## Quick Reference
+## Setup
+1. Ensure OpenRouter API key is configured
+2. Ensure the cheap models list includes your preferred free/cheap models
+3. Run the skill with a test message to verify splitting works
 
-Use the smallest relevant file for the current task.
+## Quick Start
+```bash
+# Test the orchestrator with a sample task
+python ~/.openclaw/workspace/skills/orchestrator/orchestrator.py "Write Python code for Fibonacci; Analyze results; Summarize report"
+```
 
-| Topic | File |
-|-------|------|
-| Setup and activation preferences | `setup.md` |
-| Memory template | `memory-template.md` |
-| Authentication and provider wiring | `auth-and-provider.md` |
-| Routing patterns by workload | `routing-playbooks.md` |
-| Reliability and fallback handling | `fallback-reliability.md` |
-| Cost controls and spend reviews | `cost-guardrails.md` |
+## Models Supported
+- Primary: openrouter/openai/gpt-5-nano (free/cheapest)
+- Fallbacks: grok-3-mini, gemini-2.5-flash-lite, sonar, deepseek-r1, deepseek-v3.2
 
-## Core Rules
+## Task Types Classification
+The system classifies tasks into:
+- `coding`: Programming tasks
+- `analysis`: Data analysis, reasoning
+- `summarization`: Text summarization
+- `creative`: Creative writing, brainstorming
+- `translation`: Language translation
+- `qa`: Question answering
 
-### 1. Start from Workload Classes, Not Model Hype
-- Classify requests first: coding, analysis, extraction, summarization, or long-context synthesis.
-- Map each class to a primary model and a fallback before changing any defaults.
+## Performance Tracking
+Each task execution records:
+- Model used
+- Task type
+- Duration (seconds)
+- Cost estimate
+- Success status
+- Quality score (if available)
 
-### 2. Keep Authentication Explicit and Verifiable
-- Use `OPENROUTER_API_KEY` from the local environment, never pasted into logs or chat memory.
-- Validate auth with a minimal request before applying routing changes.
+## Learning Algorithm
+The system uses a simple reinforcement learning approach:
+1. For each task type, track average performance per model
+2. Prefer models with highest success rate for that task type
+3. Balance exploration (trying new models) vs exploitation (using known good models)
+4. Prioritize free models over paid ones when performance is similar
 
-### 3. Design Fallbacks for Failure Modes, Not Convenience
-- Separate fallback reasons: rate limit, provider outage, latency spike, or output quality failure.
-- Keep at least one fallback from a different provider family for resilience.
-
-### 4. Enforce Cost Boundaries Before Throughput Tuning
-- Set cost ceilings by task class and check expected token burn before broad rollout.
-- Route low-stakes tasks to cheaper models and reserve premium models for high-impact tasks.
-
-### 5. Change One Layer at a Time
-- Modify either model selection, fallback policy, or budget limits in a single iteration.
-- After each change, run a quick verification prompt set and record outcome.
-
-### 6. Record Decisions for Repeatability
-- Save the final routing policy, rationale, and known tradeoffs in memory.
-- Reuse proven policies instead of repeatedly rebuilding from scratch.
-
-## Common Traps
-
-- Choosing one model for every task -> higher cost and unstable quality under varied workloads.
-- Using same-family fallback chain only -> cascading failures during provider-specific incidents.
-- Ignoring token limits for long inputs -> truncated responses and hidden quality loss.
-- Changing routing and budgets simultaneously -> unclear root cause when quality drops.
-- Running without verification prompts -> broken routing detected only after user-facing failures.
-
-## External Endpoints
-
-These endpoints are used only to discover model metadata and execute routed inference requests under explicit user task intent.
-
-| Endpoint | Data Sent | Purpose |
-|----------|-----------|---------|
-| https://openrouter.ai/api/v1/models | none or auth header only | Discover current model catalog and metadata |
-| https://openrouter.ai/api/v1/chat/completions | user prompt content and selected model id | Execute routed inference requests |
-
-No other data is sent externally.
-
-## Security & Privacy
-
-**Data that leaves your machine:**
-- Prompt text and selected model metadata sent to OpenRouter when inference is requested.
-
-**Data that stays local:**
-- Routing notes and preferences under `~/open-router/`.
-- Local environment variable references and verification logs.
-
-**This skill does NOT:**
-- Request raw API keys in chat.
-- Store plaintext secrets in skill memory files.
-- Modify files outside `~/open-router/` for its own state.
-
-## Trust
-
-By using this skill, prompt content is sent to OpenRouter for model execution.
-Only install if you trust this service with your data.
+## Safety
+- Never sends private data to external analytics
+- All performance data stays locally in task_db.json
+- Can be disabled at any time by removing the skill
 
 ## Related Skills
-Install with `clawhub install <slug>` if user confirms:
-- `api` — API request design, payload shaping, and response validation patterns
-- `auth` — credential handling and auth troubleshooting workflows
-- `models` — model comparison and selection guidance
-- `monitoring` — runtime health checks and incident tracking practices
-
-## Feedback
-
-- If useful: `clawhub star open-router`
-- Stay updated: `clawhub sync`
+- `open-router`: OpenRouter configuration and routing
+- `data-analysis`: For complex analysis tasks
+- `memory`: For long-term learning improvements

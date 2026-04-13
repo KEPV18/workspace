@@ -1,123 +1,102 @@
-# TOOLS.md — Local Environment Notes
+# TOOLS.md — Domain Environment Reference
 
-This file stores **environment-specific details** Sam may need.
+*Six Eyes local data cache. All critical system paths, devices, and configurations.*
 
-Skills define **how tools work**.
-This file defines **how they are configured here**.
-
-Think of it as Sam's **local cheat sheet**.
+This file exists so Satoru never wastes cycles searching for basic environment info.
 
 ---
 
 # Usage Rules
 
-Store information here that is:
-
-* specific to this machine or environment
-* useful for automation or quick reference
-* not sensitive enough to require encryption
-
-Do NOT store:
-
-* passwords
-* private keys
-* sensitive credentials
-
-Only store **references or identifiers**.
+- Store **machine-specific** details.
+- Store **paths and identifiers** useful for automation.
+- **No secrets.** Passwords, keys, tokens stay elsewhere.
 
 ---
 
-# Devices
+# Primary Device (The Domain)
 
-Document important devices Sam might interact with.
+**Hostname:** main-laptop  
+**Make/Model:** Lenovo Legion Pro 5 16IRX8  
+**OS:** Fedora Linux  
+**DE:** KDE Plasma
 
-### Computers
+**Specs (Quick Reference):**
+- CPU: Intel i9-13900HX (24 cores)
+- GPU: NVIDIA RTX 4050 (6GB)
+- RAM: 16GB DDR5-5600
+- Disk: 512GB NVMe
 
-* main-laptop → Ahmed's primary machine
-* home-server → Local server (Linux)
-
-### Smart Devices
-
-* living-room-speaker → Main audio speaker
-* office-speaker → Desktop speaker
-* bedroom-light → Smart light
+**Power Profile:** Performance-capable. Thermal monitoring required.
 
 ---
 
-# Cameras
+# Key System Paths
 
-If cameras exist, document them here.
+- **Home:** `/home/ahmed`
+- **Workspace Root:** `/home/ahmed/workspace` (assumed, verify)
+- **Git Projects:** `/home/ahmed/projects` (assumed, verify)
+- **Screenshots:** `/home/ahmed/Pictures/Screenshots`
+- **Downloads:** `/home/ahmed/Downloads` (junk accumulation zone)
 
-Example format:
+---
 
-* living-room → main living area, wide angle
-* front-door → entrance camera, motion detection
+# Package Management
+
+**Manager:** `dnf` (Fedora native)  
+**Flatpak:** Available  
+**Snap:** Not preferred unless necessary
+
+---
+
+# Network (Local)
+
+**Local IP Range:** 192.168.1.x (typical, verify with `ip a`)  
+**Router:** router.local or 192.168.1.1 (standard)
 
 ---
 
 # SSH Hosts
 
-Known SSH connections.
+*None documented. Update if remote access is configured.*
 
-Format:
+---
 
-host-name → IP or hostname | user
+# Smart Devices / IoT
 
-Example:
+*None configured or relevant to current automation scope.*
 
-* home-server → 192.168.1.100 | admin
-* dev-server → dev.local | ahmed
+---
+
+# Cameras
+
+*None configured.*
 
 ---
 
 # Voice & Audio
 
-Preferences for voice systems.
-
-Example:
-
-Preferred TTS voice → Nova
-Voice style → calm, slightly playful
-
-Default audio output:
-
-* primary → office-speaker
-* secondary → living-room-speaker
-
----
-
-# Network
-
-Useful network information.
-
-Example:
-
-Local network range → 192.168.1.x
-Router hostname → router.local
+**Default Audio Output:** Built-in speakers / headphones (auto-switch)  
+**TTS:** Not configured  
+**Voice Style:** N/A
 
 ---
 
 # Automation Notes
 
-Useful shortcuts for tasks.
-
-Example:
-
-* Git projects stored in `/projects`
-* Screenshots folder → `/home/ahmed/Pictures/Screenshots`
-* Workspace root → `/home/ahmed/workspace`
+- Screenshots saved automatically to `~/Pictures/Screenshots` (KDE default).
+- Workspace and project directories need verification. Will update on first scan.
+- DNF cache cleaned periodically to save space.
 
 ---
 
 # Updating This File
 
-Update this file when:
+Update when:
+- New hardware is connected.
+- Important paths are created or changed.
+- Network configuration shifts.
 
-* a new device is added
-* network details change
-* new tools are installed
-* automation paths are modified
+Keep it **lean**. This is a reference, not a log.
 
-Keep entries **short, clear, and structured**.
-
-This file should always be **quick to scan and easy to use**.
+*End of local cheat sheet.*

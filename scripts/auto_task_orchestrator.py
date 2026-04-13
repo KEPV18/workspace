@@ -7,6 +7,7 @@ LOG_DIR = os.path.expanduser("~/.openclaw/workspace/logs")
 MEMORY_FILE = os.path.expanduser("~/.openclaw/memory/MEMORY.md")
 
 CHEAP_ORDER = [
+    "openrouter/z-ai/glm-4.7-flash",
     "openrouter/openai/gpt-5-nano",
     "openrouter/x-ai/grok-3-mini",
     "openrouter/google/gemini-2.5-flash-lite",
