@@ -1,2 +1,0 @@
-2026-03-15T03:33:03.500365+00:00 | Subtask 1 | Model: openrouter/deepseek/deepseek-v3.2 | Duration: 1.88s | Cost: $0.000469 | Success: False | Output: Error: Pass --to <E.164>, --session-id, or --agent to choose a session
-2026-03-15T03:33:05.376724+00:00 | Subtask 2 | Model: openrouter/x-ai/grok-3-mini | Duration: 1.88s | Cost: $0.000281 | Success: False | Output: Error: Pass --to <E.164>, --session-id, or --agent to choose a session
