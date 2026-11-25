@@ -1,4 +1,0 @@
-2026-03-15T03:28:50.224688+00:00 | Subtask 1 | Model: openrouter/deepseek/deepseek-v3.2 | Duration: 3.61s | Cost: $0.000903 | Success: False | Output: error: unknown command 'run'
-(Did you mean cron?)
-2026-03-15T03:28:53.723573+00:00 | Subtask 2 | Model: openrouter/openai/gpt-5-nano | Duration: 3.50s | Cost: $0.000350 | Success: False | Output: error: unknown command 'run'
-(Did you mean cron?)
