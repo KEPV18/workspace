@@ -1,3 +1,0 @@
-2026-03-15T04:33:35.014443+00:00 | Subtask 1 | Model: openrouter/deepseek/deepseek-v3.2 | Duration: 1.81s | Cost: $0.000452 | Success: False | Output: Error: Pass --to <E.164>, --session-id, or --agent to choose a session
-2026-03-15T04:33:36.808690+00:00 | Subtask 2 | Model: openrouter/openai/gpt-5-nano | Duration: 1.79s | Cost: $0.000179 | Success: False | Output: Error: Pass --to <E.164>, --session-id, or --agent to choose a session
-2026-03-15T04:33:38.630273+00:00 | Subtask 3 | Model: openrouter/perplexity/sonar | Duration: 1.82s | Cost: $0.000364 | Success: False | Output: Error: Pass --to <E.164>, --session-id, or --agent to choose a session
